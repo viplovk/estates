@@ -1,0 +1,99 @@
+{
+  "name": "Leads",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    },
+    "enquiry_type": {
+      "type": "string",
+      "enum": [
+        "property_enquiry",
+        "viewing_request",
+        "contact",
+        "owner_submission"
+      ],
+      "enumColors": [
+        "blue",
+        "purple",
+        "gray",
+        "yellow"
+      ]
+    },
+    "source": {
+      "type": "string"
+    },
+    "property_id": {
+      "type": "string"
+    },
+    "property_title": {
+      "type": "string"
+    },
+    "property_slug": {
+      "type": "string"
+    },
+    "viewing_date": {
+      "type": "string"
+    },
+    "viewing_time": {
+      "type": "string"
+    },
+    "guests": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "New",
+        "Contacted",
+        "Visit Scheduled",
+        "Visit Completed",
+        "Converted",
+        "Closed"
+      ],
+      "enumColors": [
+        "blue",
+        "yellow",
+        "purple",
+        "green",
+        "green",
+        "gray"
+      ]
+    },
+    "notes": {
+      "type": "string",
+      "description": "Internal notes, admin only"
+    }
+  },
+  "required": [
+    "name",
+    "phone"
+  ],
+  "rls": {
+    "create": {},
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

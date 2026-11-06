@@ -1,0 +1,167 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* East Delhi Realty — warm editorial palette */
+    --background: 42 36% 95%;        /* cream #F6F3EC */
+    --foreground: 60 4% 14%;         /* charcoal #242421 */
+    --card: 48 100% 99%;             /* ivory #FFFEFA */
+    --card-foreground: 60 4% 14%;
+    --popover: 48 100% 99%;
+    --popover-foreground: 60 4% 14%;
+    --primary: 60 4% 10%;            /* deep charcoal #171715 */
+    --primary-foreground: 42 36% 96%;
+    --secondary: 39 28% 56%;         /* champagne gold #B69A67 */
+    --secondary-foreground: 48 100% 99%;
+    --muted: 42 25% 91%;
+    --muted-foreground: 41 5% 42%;
+    --accent: 39 28% 56%;
+    --accent-foreground: 48 100% 99%;
+    --destructive: 0 55% 42%;
+    --destructive-foreground: 48 100% 99%;
+    --border: 41 11% 78%;
+    --input: 41 11% 78%;
+    --ring: 39 28% 56%;
+    --radius: 0.25rem;
+
+    --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    --font-heading: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    --font-body: "Manrope", ui-sans-serif, system-ui, -apple-system, Arial, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+    --sidebar-background: 42 30% 93%;
+    --sidebar-foreground: 60 4% 14%;
+    --sidebar-primary: 60 4% 10%;
+    --sidebar-primary-foreground: 48 100% 99%;
+    --sidebar-accent: 42 25% 88%;
+    --sidebar-accent-foreground: 60 4% 14%;
+    --sidebar-border: 41 11% 80%;
+    --sidebar-ring: 39 28% 56%;
+  }
+
+  .dark {
+    --background: 60 4% 9%;
+    --foreground: 42 36% 96%;
+    --card: 60 4% 12%;
+    --card-foreground: 42 36% 96%;
+    --popover: 60 4% 12%;
+    --popover-foreground: 42 36% 96%;
+    --primary: 42 36% 96%;
+    --primary-foreground: 60 4% 9%;
+    --secondary: 39 28% 56%;
+    --secondary-foreground: 60 4% 9%;
+    --muted: 60 4% 16%;
+    --muted-foreground: 42 12% 68%;
+    --accent: 39 28% 56%;
+    --accent-foreground: 60 4% 9%;
+    --border: 60 4% 22%;
+    --input: 60 4% 22%;
+    --ring: 39 28% 56%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-cream text-ink font-body antialiased;
+    font-feature-settings: "kern" 1;
+    letter-spacing: 0.005em;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display;
+    font-weight: 300;
+  }
+
+  ::selection {
+    background: #b69a67;
+    color: #fffefa;
+  }
+}
+
+@layer components {
+  /* all-caps micro label used throughout the site */
+  .eyebrow {
+    @apply font-body uppercase text-gold;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+  }
+
+  .rule-gold {
+    height: 1px;
+    background: #b69a67;
+    border: 0;
+  }
+
+  .hairline {
+    border-color: #ded9ce;
+  }
+
+  .link-underline {
+    position: relative;
+    display: inline-block;
+  }
+  .link-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    height: 1px;
+    width: 100%;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+  .link-underline:hover::after {
+    transform: scaleX(1);
+  }
+
+  /* underline-only form fields (property dossier forms) */
+  .field-line {
+    @apply w-full border-0 border-b bg-transparent px-0 py-2.5 font-body text-[15px] text-ink;
+    border-color: #d7d1c4;
+    border-radius: 0;
+    transition: border-color 0.25s ease;
+  }
+  .field-line:focus {
+    outline: none;
+    border-color: #b69a67;
+    box-shadow: none;
+  }
+  .field-line::placeholder {
+    color: #a29c90;
+  }
+}
+
+/* Gold letter ripple on the hero headline — colour only, no layout shift */
+@keyframes edr-letter-wave {
+  0%, 20%, 100% { color: #242421; }
+  10% { color: #b69a67; }
+}
+
+.edr-letter {
+  animation: edr-letter-wave 6s linear infinite;
+  animation-delay: calc(var(--edr-i, 0) * 0.075s);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .edr-letter { animation: none; color: #242421; }
+}
+
+/* thin, quiet scrollbars inside galleries */
+.gallery-scroll::-webkit-scrollbar { height: 5px; }
+.gallery-scroll::-webkit-scrollbar-thumb { background: #d7d1c4; }
+.gallery-scroll::-webkit-scrollbar-track { background: transparent; }

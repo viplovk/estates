@@ -1,0 +1,126 @@
+{
+  "name": "OwnerSubmissions",
+  "type": "object",
+  "properties": {
+    "owner_name": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "locality": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "Flat / Apartment",
+        "Builder Floor",
+        "Independent House",
+        "Villa",
+        "Plot / Land",
+        "Shop",
+        "Office Space",
+        "Warehouse"
+      ],
+      "enumColors": [
+        "blue",
+        "purple",
+        "green",
+        "green",
+        "yellow",
+        "pink",
+        "blue",
+        "gray"
+      ]
+    },
+    "intent": {
+      "type": "string",
+      "enum": [
+        "sell",
+        "rent"
+      ],
+      "enumColors": [
+        "green",
+        "blue"
+      ]
+    },
+    "expected_price": {
+      "type": "string"
+    },
+    "area": {
+      "type": "string"
+    },
+    "bedrooms": {
+      "type": "string"
+    },
+    "bathrooms": {
+      "type": "string"
+    },
+    "furnishing": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "photos": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "extra_info": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "approved",
+        "rejected"
+      ],
+      "enumColors": [
+        "yellow",
+        "green",
+        "red"
+      ]
+    },
+    "admin_notes": {
+      "type": "string"
+    },
+    "converted_property_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "owner_name",
+    "phone",
+    "locality",
+    "category",
+    "intent"
+  ],
+  "rls": {
+    "create": {},
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
